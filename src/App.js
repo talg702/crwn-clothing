@@ -12,6 +12,7 @@ import { dispatch } from 'rxjs/internal/observable/pairs';
 import { setCurrentUser } from './redux/user/user.actions';
 import { createStructuredSelector } from 'reselect';
 import checkoutPage from './pages/checkout/checkout.component';
+import { selectCurrentUser } from './redux/user/user.selectors';
 
 class App extends React.Component {
  
@@ -57,7 +58,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: setCurrentUser
+  currentUser: selectCurrentUser
 })
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
