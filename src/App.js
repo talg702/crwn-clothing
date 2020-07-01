@@ -7,12 +7,13 @@ import Header from './components/header/header.component';
 
 import { connect } from 'react-redux';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument, addCollectionAndDocuments } from './firebase/firebase.utils';
 import { dispatch } from 'rxjs/internal/observable/pairs';
 import { setCurrentUser } from './redux/user/user.actions';
 import { createStructuredSelector } from 'reselect';
 import checkoutPage from './pages/checkout/checkout.component';
 import { selectCurrentUser } from './redux/user/user.selectors';
+import { selectCollectionsForPreview } from './redux/shop/shop.selector';
 
 class App extends React.Component {
  
@@ -58,10 +59,10 @@ class App extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
 })
 const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
+  setCurrentUser: user => dispatch(setCurrentUser(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
