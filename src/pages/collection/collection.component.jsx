@@ -5,7 +5,8 @@ import './collection.styles.scss'
 import { selectCollection } from '../../redux/shop/shop.selector';
 import CollectionItem from '../../components/collection-item/collection-item.component';
 
-const CollectionPage = ( {match, collection : { title, items } }) => { 
+const CollectionPage = ( {collection} ) => { 
+    const { title, items } = collection ? collection : {title: null, items: []}
     return (
     <div className="collection-page">
         <h2>{title}</h2>
